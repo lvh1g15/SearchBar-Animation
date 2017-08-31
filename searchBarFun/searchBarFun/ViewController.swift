@@ -9,10 +9,12 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var searchClass = SetupTextField()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        searchClass.viewDidLoadSearchButton(viewer: self.view)
     }
 }
 

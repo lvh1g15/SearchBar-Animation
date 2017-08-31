@@ -14,6 +14,7 @@
 		4431FFB31F585C8400CDEB21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4431FFB11F585C8400CDEB21 /* LaunchScreen.storyboard */; };
 		4431FFBE1F585C8400CDEB21 /* searchBarFunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4431FFBD1F585C8400CDEB21 /* searchBarFunTests.swift */; };
 		4431FFC91F585C8400CDEB21 /* searchBarFunUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4431FFC81F585C8400CDEB21 /* searchBarFunUITests.swift */; };
+		4431FFD71F585EFE00CDEB21 /* searchbarTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4431FFD61F585EFE00CDEB21 /* searchbarTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		4431FFC41F585C8400CDEB21 /* searchBarFunUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = searchBarFunUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4431FFC81F585C8400CDEB21 /* searchBarFunUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchBarFunUITests.swift; sourceTree = "<group>"; };
 		4431FFCA1F585C8400CDEB21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4431FFD61F585EFE00CDEB21 /* searchbarTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = searchbarTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				4431FFA81F585C8400CDEB21 /* AppDelegate.swift */,
+				4431FFD81F585F0500CDEB21 /* SearchClass */,
 				4431FFAA1F585C8400CDEB21 /* ViewController.swift */,
 				4431FFAC1F585C8400CDEB21 /* Main.storyboard */,
 				4431FFAF1F585C8400CDEB21 /* Assets.xcassets */,
@@ -123,6 +126,14 @@
 				4431FFCA1F585C8400CDEB21 /* Info.plist */,
 			);
 			path = searchBarFunUITests;
+			sourceTree = "<group>";
+		};
+		4431FFD81F585F0500CDEB21 /* SearchClass */ = {
+			isa = PBXGroup;
+			children = (
+				4431FFD61F585EFE00CDEB21 /* searchbarTextField.swift */,
+			);
+			name = SearchClass;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4431FFD71F585EFE00CDEB21 /* searchbarTextField.swift in Sources */,
 				4431FFAB1F585C8400CDEB21 /* ViewController.swift in Sources */,
 				4431FFA91F585C8400CDEB21 /* AppDelegate.swift in Sources */,
 			);
@@ -516,6 +528,7 @@
 				4431FFCF1F585C8400CDEB21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4431FFD01F585C8400CDEB21 /* Build configuration list for PBXNativeTarget "searchBarFunTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +537,7 @@
 				4431FFD21F585C8400CDEB21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4431FFD31F585C8400CDEB21 /* Build configuration list for PBXNativeTarget "searchBarFunUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +546,7 @@
 				4431FFD51F585C8400CDEB21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
