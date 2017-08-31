@@ -27,7 +27,7 @@ class SetupTextField {
         backgroundView.layer.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7).cgColor
         backgroundView.heightAnchor.constraint(equalToConstant: 70).isActive = true
         backgroundView.centerXAnchor.constraint(equalTo: viewer.centerXAnchor).isActive = true
-        backgroundView.centerYAnchor.constraint(equalTo: viewer.centerYAnchor, constant: 0).isActive = true
+        backgroundView.centerYAnchor.constraint(equalTo: viewer.centerYAnchor, constant: -150).isActive = true
         backgroundView.layer.opacity = 0.0
         
         let searchBarView = UIView()
@@ -38,7 +38,7 @@ class SetupTextField {
         searchBarView.layer.backgroundColor = UIColor(red: 230/255, green: 228/255, blue: 228/255, alpha: 1.0).cgColor
         searchBarView.translatesAutoresizingMaskIntoConstraints = false
         searchBarView.centerXAnchor.constraint(equalTo: viewer.centerXAnchor).isActive = true
-        searchBarView.centerYAnchor.constraint(equalTo: viewer.centerYAnchor).isActive = true
+        searchBarView.centerYAnchor.constraint(equalTo: viewer.centerYAnchor, constant: -150).isActive = true
         searchBarView.widthAnchor.constraint(equalToConstant: 63).isActive = true
         searchBarView.heightAnchor.constraint(equalToConstant: 63).isActive = true
         
@@ -50,19 +50,19 @@ class SetupTextField {
         searched.translatesAutoresizingMaskIntoConstraints = false
         searched.widthAnchor.constraint(equalToConstant: 25).isActive = true
         searched.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        searched.centerYAnchor.constraint(equalTo: viewer.centerYAnchor).isActive = true
+        searched.centerYAnchor.constraint(equalTo: viewer.centerYAnchor, constant: -150).isActive = true
         searched.centerXAnchor.constraint(equalTo: viewer.centerXAnchor).isActive = true
         
         let searchLabel = UITextField()
         viewer.addSubview(searchLabel)
         self.searchlabel = searchLabel
         searchLabel.attributedPlaceholder = NSAttributedString(string: "Search for your friends ...", attributes: [NSForegroundColorAttributeName: UIColor.lightGray])
-        searchLabel.font = UIFont(name: "Avenir-Medium", size: 15.0)
+        searchLabel.font = UIFont(name: "Avenir-Heavy", size: 15.0)
         searchLabel.textColor = UIColor.lightGray
         searchLabel.translatesAutoresizingMaskIntoConstraints = false
         searchLabel.textAlignment = .center
-        searchLabel.centerXAnchor.constraint(equalTo: viewer.centerXAnchor, constant: 0).isActive = true
-        searchLabel.centerYAnchor.constraint(equalTo: viewer.centerYAnchor, constant: 20).isActive = true
+        searchLabel.centerXAnchor.constraint(equalTo: viewer.centerXAnchor, constant: 10).isActive = true
+        searchLabel.centerYAnchor.constraint(equalTo: viewer.centerYAnchor, constant: -130).isActive = true
         searchLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
         searchLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
         searchLabel.layer.opacity = 0
@@ -84,7 +84,7 @@ class SetupTextField {
         }, completion: { finished in
             
             viewer.layoutIfNeeded()
-            self.searchlabel?.centerYAnchor.constraint(equalTo: viewer.centerYAnchor, constant: 0).isActive = true
+            self.searchlabel?.centerYAnchor.constraint(equalTo: viewer.centerYAnchor, constant: -150).isActive = true
             
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
                 viewer.layoutIfNeeded()
