@@ -57,7 +57,7 @@ class SetupTextField {
         viewer.addSubview(searchLabel)
         self.searchlabel = searchLabel
         searchLabel.attributedPlaceholder = NSAttributedString(string: "Search for your friends ...", attributes: [NSForegroundColorAttributeName: UIColor.lightGray])
-        searchLabel.font = UIFont(name: "Avenir-Bold", size: 25.0)
+        searchLabel.font = UIFont(name: "Avenir-Medium", size: 15.0)
         searchLabel.textColor = UIColor.lightGray
         searchLabel.translatesAutoresizingMaskIntoConstraints = false
         searchLabel.textAlignment = .center
@@ -82,6 +82,10 @@ class SetupTextField {
             self.backgroundView?.layer.opacity = 1
             self.searchBarView?.layer.opacity = 0
         }, completion: { finished in
+            
+            viewer.layoutIfNeeded()
+            self.searchlabel?.centerYAnchor.constraint(equalTo: viewer.centerYAnchor, constant: 0).isActive = true
+            
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
                 viewer.layoutIfNeeded()
                 self.searchlabel?.layer.opacity = 1.0
