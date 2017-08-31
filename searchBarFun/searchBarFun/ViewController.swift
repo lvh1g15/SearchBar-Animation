@@ -15,11 +15,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let searchStruct = searchClass.viewDidLoadSearchButton(viewer: self.view)
-        searchStruct.addTarget(self, action: #selector(animate(_:)), for: .touchUpInside)
+        searchStruct.search.addTarget(self, action: #selector(animate(_:)), for: .touchUpInside)
+        searchStruct.dismiss.addTarget(self, action: #selector(dismissAnimate(_:)), for: <#T##UIControlEvents#>)
     }
     
     @objc private func animate(_ sender: UIButton) {
         searchClass.setupBackgroundView(viewer: self.view)
+    }
+    
+    @objc private func dismissAnimate(_ sender: UIButton) {
+        
     }
 }
 

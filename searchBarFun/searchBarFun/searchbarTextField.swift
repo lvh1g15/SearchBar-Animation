@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Darwin
 
 class SetupTextField {
     
@@ -16,8 +17,14 @@ class SetupTextField {
     weak var view = UIView()
     weak var searchBarView = UIView()
     weak var searchlabel = UITextField()
+    weak var cancelButton = UIButton()
     
-    func viewDidLoadSearchButton(viewer: UIView) -> UIButton {
+    struct buttons {
+        var dismiss: UIButton
+        var search: UIButton
+    }
+    
+    func viewDidLoadSearchButton(viewer: UIView) -> buttons {
         let backgroundView = UIView()
         self.view = viewer
         self.backgroundView = backgroundView
@@ -56,22 +63,32 @@ class SetupTextField {
         let searchLabel = UITextField()
         viewer.addSubview(searchLabel)
         self.searchlabel = searchLabel
-        searchLabel.attributedPlaceholder = NSAttributedString(string: "Search for your friends ...", attributes: [NSForegroundColorAttributeName: UIColor.lightGray])
+        searchLabel.attributedPlaceholder = NSAttributedString(string: "Search for friends ...", attributes: [NSForegroundColorAttributeName: UIColor.lightGray])
         searchLabel.font = UIFont(name: "Avenir-Heavy", size: 15.0)
         searchLabel.textColor = UIColor.lightGray
         searchLabel.translatesAutoresizingMaskIntoConstraints = false
         searchLabel.textAlignment = .center
-        searchLabel.centerXAnchor.constraint(equalTo: viewer.centerXAnchor, constant: 10).isActive = true
+        searchLabel.centerXAnchor.constraint(equalTo: viewer.centerXAnchor, constant: 0).isActive = true
         searchLabel.centerYAnchor.constraint(equalTo: viewer.centerYAnchor, constant: -130).isActive = true
-        searchLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        searchLabel.widthAnchor.constraint(equalToConstant: 170).isActive = true
         searchLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
         searchLabel.layer.opacity = 0
         
-        return searched
+        let cancelButton = UIButton()
+        viewer.addSubview(cancelButton)
+        self.cancelButton = cancelButton
+        cancelButton.translatesAutoresizingMaskIntoConstraints = false
+        cancelButton.setImage(UIImage(named: "cancel"), for: .normal)
+        cancelButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        cancelButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        cancelButton.layer.opacity = 0
+        cancelButton.centerYAnchor.constraint(equalTo: viewer.centerYAnchor, constant: -150).isActive = true
+        cancelButton.centerXAnchor.constraint(equalTo: viewer.centerXAnchor, constant: 120).isActive = true
+        
+        return buttons(dismiss: cancelButton, search: searched)
     }
     
     func setupBackgroundView(viewer: UIView) {
-        
         viewer.layoutIfNeeded()
         self.backgroundView?.widthAnchor.constraint(equalToConstant: 300).isActive = true
         self.searchBarView?.centerXAnchor.constraint(equalTo: viewer.centerXAnchor, constant: -105).isActive = true
@@ -88,8 +105,14 @@ class SetupTextField {
             
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
                 viewer.layoutIfNeeded()
+                self.cancelButton?.transform = CGAffineTransform(rotationAngle: CGFloat(300))
+                self.cancelButton?.layer.opacity = 1
                 self.searchlabel?.layer.opacity = 1.0
             })
         })
     }
+    
+    
+    
+    
 }
