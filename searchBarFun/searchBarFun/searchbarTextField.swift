@@ -15,12 +15,7 @@ class SetupTextField {
     weak var searched = UIButton()
     weak var view = UIView()
     weak var searchBarView = UIView()
-    
-    struct ToMainViewController {
-        var background: UIView
-        var searchView: UIView
-        var searchButton: UIButton
-    }
+    weak var searchlabel = UITextField()
     
     func viewDidLoadSearchButton(viewer: UIView) -> UIButton {
         let backgroundView = UIView()
@@ -28,9 +23,9 @@ class SetupTextField {
         self.backgroundView = backgroundView
         viewer.addSubview(backgroundView)
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        backgroundView.layer.cornerRadius = 40
-        backgroundView.layer.backgroundColor = UIColor.black.cgColor
-        backgroundView.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        backgroundView.layer.cornerRadius = 35
+        backgroundView.layer.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7).cgColor
+        backgroundView.heightAnchor.constraint(equalToConstant: 70).isActive = true
         backgroundView.centerXAnchor.constraint(equalTo: viewer.centerXAnchor).isActive = true
         backgroundView.centerYAnchor.constraint(equalTo: viewer.centerYAnchor, constant: 0).isActive = true
         backgroundView.layer.opacity = 0.0
@@ -38,25 +33,39 @@ class SetupTextField {
         let searchBarView = UIView()
         self.searchBarView = searchBarView
         viewer.addSubview(searchBarView)
-        searchBarView.layer.cornerRadius = 35
+        searchBarView.layer.cornerRadius = 30
         searchBarView.layer.opacity = 1.0
         searchBarView.layer.backgroundColor = UIColor(red: 230/255, green: 228/255, blue: 228/255, alpha: 1.0).cgColor
         searchBarView.translatesAutoresizingMaskIntoConstraints = false
         searchBarView.centerXAnchor.constraint(equalTo: viewer.centerXAnchor).isActive = true
         searchBarView.centerYAnchor.constraint(equalTo: viewer.centerYAnchor).isActive = true
-        searchBarView.widthAnchor.constraint(equalToConstant: 70).isActive = true
-        searchBarView.heightAnchor.constraint(equalToConstant: 70).isActive = true
+        searchBarView.widthAnchor.constraint(equalToConstant: 63).isActive = true
+        searchBarView.heightAnchor.constraint(equalToConstant: 63).isActive = true
         
         let searched = UIButton()
         self.searched = searched
-        searchBarView.addSubview(searched)
+        viewer.addSubview(searched)
         searched.layer.cornerRadius = 30
         searched.setImage(UIImage(named: "search"), for: .normal)
         searched.translatesAutoresizingMaskIntoConstraints = false
         searched.widthAnchor.constraint(equalToConstant: 25).isActive = true
         searched.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        searched.centerYAnchor.constraint(equalTo: searchBarView.centerYAnchor).isActive = true
-        searched.centerXAnchor.constraint(equalTo: searchBarView.centerXAnchor).isActive = true
+        searched.centerYAnchor.constraint(equalTo: viewer.centerYAnchor).isActive = true
+        searched.centerXAnchor.constraint(equalTo: viewer.centerXAnchor).isActive = true
+        
+        let searchLabel = UITextField()
+        viewer.addSubview(searchLabel)
+        self.searchlabel = searchLabel
+        searchLabel.attributedPlaceholder = NSAttributedString(string: "Search for your friends ...", attributes: [NSForegroundColorAttributeName: UIColor.lightGray])
+        searchLabel.font = UIFont(name: "Avenir-Bold", size: 25.0)
+        searchLabel.textColor = UIColor.lightGray
+        searchLabel.translatesAutoresizingMaskIntoConstraints = false
+        searchLabel.textAlignment = .center
+        searchLabel.centerXAnchor.constraint(equalTo: viewer.centerXAnchor, constant: 0).isActive = true
+        searchLabel.centerYAnchor.constraint(equalTo: viewer.centerYAnchor, constant: 20).isActive = true
+        searchLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        searchLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        searchLabel.layer.opacity = 0
         
         return searched
     }
@@ -65,11 +74,18 @@ class SetupTextField {
         
         viewer.layoutIfNeeded()
         self.backgroundView?.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        self.searchBarView?.centerXAnchor.constraint(equalTo: viewer.centerXAnchor, constant: -105).isActive = true
+        self.searched?.centerXAnchor.constraint(equalTo: viewer.centerXAnchor, constant: -110).isActive = true
         
-        UIView.animate(withDuration: 1, delay: 0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
             viewer.layoutIfNeeded()
-            self.backgroundView?.layer.opacity = 1.0
-            
+            self.backgroundView?.layer.opacity = 1
+            self.searchBarView?.layer.opacity = 0
+        }, completion: { finished in
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
+                viewer.layoutIfNeeded()
+                self.searchlabel?.layer.opacity = 1.0
+            })
         })
     }
 }
