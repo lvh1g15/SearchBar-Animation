@@ -112,6 +112,32 @@ class SetupTextField {
         })
     }
     
+    func dismissAnimation(viewer: UIView) {
+        viewer.layoutIfNeeded()
+        self.backgroundView?.widthAnchor.constraint(equalToConstant: 0).isActive = true
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+            viewer.layoutIfNeeded()
+            self.backgroundView?.layer.opacity = 0
+            self.searchBarView?.layer.opacity = 1
+            self.cancelButton?.transform = CGAffineTransform(rotationAngle: CGFloat(0))
+            self.cancelButton?.layer.opacity = 0
+        }, completion: { finished in
+            
+            viewer.layoutIfNeeded()
+            self.searchlabel?.centerYAnchor.constraint(equalTo: viewer.centerYAnchor, constant: -130).isActive = true
+//            self.searchBarView?.centerXAnchor.constraint(equalTo: viewer.centerXAnchor, constant: 1).isActive = true
+//            self.searched?.centerXAnchor.constraint(equalTo: viewer.centerXAnchor, constant: 1).isActive = true
+            
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
+                viewer.layoutIfNeeded()
+                self.searchBarView?.layer.frame = CGRect(x: (self.view?.layer.frame.width)!/2, y: ((self.view?.layer.frame.width)!/2)-20, width: 63, height: 63)
+                self.searched?.layer.frame = CGRect(x: (self.view?.layer.frame.width)!/2, y: ((self.view?.layer.frame.width)!/2)-20, width: 25, height: 25)
+//                self.searchlabel?.frame.origin.x += 5
+                self.searchlabel?.layer.opacity = 0
+            })
+        })
+    }
     
     
     

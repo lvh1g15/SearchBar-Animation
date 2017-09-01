@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         let searchStruct = searchClass.viewDidLoadSearchButton(viewer: self.view)
         searchStruct.search.addTarget(self, action: #selector(animate(_:)), for: .touchUpInside)
-        searchStruct.dismiss.addTarget(self, action: #selector(dismissAnimate(_:)), for: <#T##UIControlEvents#>)
+        searchStruct.dismiss.addTarget(self, action: #selector(dismissAnimate(_:)), for: .touchUpInside)
     }
     
     @objc private func animate(_ sender: UIButton) {
@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     }
     
     @objc private func dismissAnimate(_ sender: UIButton) {
-        
+        searchClass.dismissAnimation(viewer: self.view)
     }
 }
 
