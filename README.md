@@ -8,3 +8,5 @@ There is still a bug which remains, when dismissing the search bar with the canc
 if anyone is actually interested in using this. 
 
 If they are then simply Star the repo and I will then make sure to rectify any bugs.
+
+![Demo](https://user-images.githubusercontent.com/17392781/30545306-1eac7f2c-9c81-11e7-9ccb-87f4588774f2.gif)
