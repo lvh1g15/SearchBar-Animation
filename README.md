@@ -5,8 +5,8 @@ button enter by rotation as well as making the background opacity increase as th
 the search bar was made the most relevant feature in the view.
 
 There is still a bug which remains, when dismissing the search bar with the cancel button however this is something I will fix
-if anyone is actually interested in using this. 
+if anyone is actually interested in using this. The last ammendment was using a swipe to dismiss the keyboard. This was not hard to implement and I thought was an intuitive addition to the animation.
 
-If they are then simply Star the repo and I will then make sure to rectify any bugs.
+If someone stars the repo I will then make sure to rectify any bugs.
 
 ![Demo](https://user-images.githubusercontent.com/17392781/30545306-1eac7f2c-9c81-11e7-9ccb-87f4588774f2.gif)
