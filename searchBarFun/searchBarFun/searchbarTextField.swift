@@ -18,10 +18,12 @@ class SetupTextField {
     weak var searchBarView = UIView()
     weak var searchlabel = UITextField()
     weak var cancelButton = UIButton()
+    weak var background = UIView()
     
     struct buttons {
         var dismiss: UIButton
         var search: UIButton
+        var searchLabel: UITextField
     }
     
     func viewDidLoadSearchButton(viewer: UIView) -> buttons {
@@ -85,7 +87,17 @@ class SetupTextField {
         cancelButton.centerYAnchor.constraint(equalTo: viewer.centerYAnchor, constant: -150).isActive = true
         cancelButton.centerXAnchor.constraint(equalTo: viewer.centerXAnchor, constant: 120).isActive = true
         
-        return buttons(dismiss: cancelButton, search: searched)
+        let insertView = UIView()
+        self.background = insertView
+        viewer.insertSubview(insertView, at: 2)
+        insertView.backgroundColor = UIColor(red: 24/255, green: 29/255, blue: 13/255, alpha: 0)
+        insertView.translatesAutoresizingMaskIntoConstraints = false
+        insertView.trailingAnchor.constraint(equalTo: viewer.trailingAnchor).isActive = true
+        insertView.leadingAnchor.constraint(equalTo: viewer.leadingAnchor).isActive = true
+        insertView.bottomAnchor.constraint(equalTo: viewer.bottomAnchor).isActive = true
+        insertView.topAnchor.constraint(equalTo: viewer.topAnchor).isActive = true
+        
+        return buttons(dismiss: cancelButton, search: searched, searchLabel: searchLabel)
     }
     
     func setupBackgroundView(viewer: UIView) {
@@ -122,23 +134,27 @@ class SetupTextField {
             self.searchBarView?.layer.opacity = 1
             self.cancelButton?.transform = CGAffineTransform(rotationAngle: CGFloat(0))
             self.cancelButton?.layer.opacity = 0
+            self.searchBarView?.layer.frame = CGRect(x: (self.view?.layer.frame.width)!/2-((self.searchBarView?.layer.frame.width)!/2), y: ((self.view?.layer.frame.width)!/2)-20, width: 63, height: 63)
+            self.searched?.layer.frame = CGRect(x: (self.view?.layer.frame.width)!/2-((self.searched?.layer.frame.width)!/2), y: ((self.view?.layer.frame.width)!/2), width: 25, height: 25)
         }, completion: { finished in
             
             viewer.layoutIfNeeded()
             self.searchlabel?.centerYAnchor.constraint(equalTo: viewer.centerYAnchor, constant: -130).isActive = true
-//            self.searchBarView?.centerXAnchor.constraint(equalTo: viewer.centerXAnchor, constant: 1).isActive = true
-//            self.searched?.centerXAnchor.constraint(equalTo: viewer.centerXAnchor, constant: 1).isActive = true
             
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
                 viewer.layoutIfNeeded()
-                self.searchBarView?.layer.frame = CGRect(x: (self.view?.layer.frame.width)!/2, y: ((self.view?.layer.frame.width)!/2)-20, width: 63, height: 63)
-                self.searched?.layer.frame = CGRect(x: (self.view?.layer.frame.width)!/2, y: ((self.view?.layer.frame.width)!/2)-20, width: 25, height: 25)
-//                self.searchlabel?.frame.origin.x += 5
                 self.searchlabel?.layer.opacity = 0
             })
         })
     }
     
-    
-    
+    func backgroundAnimate(view: UIView, openOrClose: Bool) {
+        UIView.animate(withDuration: 0.35, delay: 0, options: .curveLinear ,animations: {
+            if openOrClose == true {
+                self.background?.backgroundColor = UIColor(red: 24/255, green: 29/255, blue: 13/255, alpha: 0.7)
+            } else {
+                self.background?.backgroundColor = UIColor(red: 24/255, green: 29/255, blue: 13/255, alpha: 0)
+            }
+        }, completion: nil)
+    }
 }
